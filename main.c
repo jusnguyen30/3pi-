@@ -142,7 +142,7 @@ void initialize()
 	play_from_program_space(go);
 	while(is_playing());
 }
-
+	
 // This is the main function, where the code starts.  All C programs
 // must have a main() function defined somewhere.
 int main()
@@ -155,50 +155,64 @@ int main()
 	// This is the "main loop" - it will run forever.
 	while(1)	{
 		
-		
-		unsigned int postion = read_line(sensors,IR_EMITTERS_ON);
-		
-		if(postion < 1000){
-			set_motors(0,100);
-		}else if( postion < 3000){
-			set_motors(100,100);
-		}else{
-			set_motors(100,0);
-		}
-		//int leftSens = sensors[0]+ sensors[1];
-		//int rightSen = sensors[3] + sensors[4];
-		
-		
-  
-		//int leftSen = sensors[0] + sensors[1];
-		//int rightSen = sensors[3] + sensors[4];
+		read_line(sensors,IR_EMITTERS_ON);
+		//unsigned int postion = read_line(sensors,IR_EMITTERS_ON);
+		unsigned int middleSens = sensors[1] + sensors[2] + sensors[3];
 		//
-		//if(sensors[2] == 900){
-			//
-			//set_motors(100,100);
-		//}
-		//else if(leftSen <= 600){
-			//
-			//set_motors(100,0);
-			//delay_ms(50);
-		//}
-		//else if(leftSen >= 1200){
+		//if(postion < 1000){
 			//set_motors(0,100);
-			//delay_ms(50);
-		//}
-		//else if(rightSen <= 600){
-			//set_motors(0,100);
-			//delay_ms(50);
-		//}
-		//else if(rightSen >= 1200){
+		//}else if( postion > 3000){
 			//set_motors(100,0);
-			//delay_ms(50)
-		//}else if(){
-			//
+		//}else if(middleSens < 1200){
+			//while(middleSens < 1200){
+				//set_motors(100,-100);
+			//}
 		//}
 		//else{
 			//set_motors(100,100);
 		//}
+		//
+		
+		
+		
+		
+		int leftSens = sensors[0]+ sensors[1];
+		int rightSen = sensors[3] + sensors[4];
+		
+		
+		
+		int leftSen = sensors[0] + sensors[1];
+		int rightSen = sensors[3] + sensors[4];
+		
+		if(sensors[2] == 900){
+			
+			set_motors(100,100);
+		}
+		else if(leftSen <= 600){
+			
+			set_motors(100,0);
+			delay_ms(50);
+		}
+		else if(leftSen >= 1200){
+			set_motors(0,100);
+			delay_ms(50);
+		}
+		else if(rightSen <= 600){
+			set_motors(0,100);
+			delay_ms(50);
+		}
+		else if(rightSen >= 1200){
+			set_motors(100,0);
+			delay_ms(50);
+			}else if(middleSens < 1200){
+				while(middleSens < 1200){
+					set_motors(100,-100);
+			}
+			
+		}
+		else{
+			set_motors(100,100);
+		}
 		
 		
     }
