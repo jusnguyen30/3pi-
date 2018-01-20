@@ -176,15 +176,19 @@ int main()
 		
 		
 		
-		int leftSens = sensors[0]+ sensors[1];
-		int rightSen = sensors[3] + sensors[4];
+		//int leftSens = sensors[0]+ sensors[1];
+		//int rightSen = sensors[3] + sensors[4];
 		
 		
 		
 		int leftSen = sensors[0] + sensors[1];
 		int rightSen = sensors[3] + sensors[4];
 		
-		if(sensors[2] == 900){
+		if(leftSen >=1100 && rightSen >=1100)
+		{
+			set_motors(100,0);
+		}
+		elif(sensors[2] == 900){
 			
 			set_motors(100,100);
 		}
